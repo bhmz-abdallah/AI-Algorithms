@@ -31,13 +31,6 @@ def save_dataset(X, y, prefix='df'):
     pd.DataFrame(X).to_csv(f'{prefix}_X.csv', index=False, header=None)
     pd.DataFrame(y).to_csv(f'{prefix}_y.csv', index=False, header=None)
 
-def linear_regression(X, y, cols):
-    """Fit and evaluate linear regression model."""
-    model = LinearRegression(fit_intercept=False)
-    model.fit(X, y)
-    coefficients = np.reshape(model.coef_, (cols, 1)).copy()
-    return coefficients
-
 # Generate synthetic dataset
 X, w, y_actual = generate_dataset(ROWS, COLS)
 y = add_noise(y_actual, ROWS)
